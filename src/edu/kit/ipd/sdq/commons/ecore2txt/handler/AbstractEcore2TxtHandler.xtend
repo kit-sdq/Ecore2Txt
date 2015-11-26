@@ -16,7 +16,7 @@ public abstract class AbstractEcore2TxtHandler extends AbstractHandler implement
 			val structuredSelection = selection as IStructuredSelection
 			val files = structuredSelection.toList.filter(typeof(IFile))
 			if (files.size > 0) {
-				executeEcore2TxtGenerator(files)
+				executeEcore2TxtGenerator(files, event)
 			}
 			return null
 		} else {
@@ -28,5 +28,5 @@ public abstract class AbstractEcore2TxtHandler extends AbstractHandler implement
 		return true;
 	}
 	
-	def abstract void executeEcore2TxtGenerator(Iterable<IFile> files)
+	def abstract void executeEcore2TxtGenerator(Iterable<IFile> files, ExecutionEvent event)
 }
