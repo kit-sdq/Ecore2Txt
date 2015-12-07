@@ -1,4 +1,15 @@
-package edu.kit.ipd.sdq.commons.ecore2txt.handler;
+/*******************************************************************************
+ * Copyright (c) 2015 Software Design and Quality (SDQ) research group
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    M. Kramer - initial API and implementation
+ *******************************************************************************/
+ package edu.kit.ipd.sdq.commons.ecore2txt.handler;
 
 import org.eclipse.core.commands.AbstractHandler
 import org.eclipse.core.commands.ExecutionEvent
