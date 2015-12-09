@@ -1,0 +1,1 @@
+shopt -s globstar nullglob extglob;for f in **/*.java; do cat epl_header.txt $f > $f.new; echo mv $f.new $f; done
