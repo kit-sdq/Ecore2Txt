@@ -13,14 +13,12 @@
 
 import com.google.inject.Guice
 import com.google.inject.Module
+import edu.kit.ipd.sdq.commons.ecore2txt.generator.Ecore2TxtGenerator
 import edu.kit.ipd.sdq.vitruvius.framework.util.bridges.EMFBridge
 import edu.kit.ipd.sdq.vitruvius.framework.util.bridges.EclipseBridge
-import edu.kit.ipd.sdq.vitruvius.framework.util.bridges.EcoreResourceBridge
+import edu.kit.ipd.sdq.vitruvius.framework.util.datatypes.Quadruple
 import org.eclipse.core.resources.IFile
-import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.eclipse.xtext.generator.IFileSystemAccess
-import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.core.resources.IProject
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
 
 /**
@@ -33,23 +31,51 @@ class Ecore2TxtUtil {
 		// empty
 	}
 	
-	def static void generateFromSelectedFilesInFolder(Iterable<IFile> files, Module generatorModule, IGenerator generator, String genTargetFolderName) {
-		for (IFile file : files) {
-			val project = file.getProject()
-			val genTargetFolder = EMFBridge.createFolderInProjectIfNecessary(project, genTargetFolderName)
-			val fsa = new JavaIoFileSystemAccess()
-			// without this injection the fsa would not provide the encoding
-			Guice.createInjector(generatorModule).injectMembers(fsa)
-			val absoluteGenFolderPath = EclipseBridge.getAbsolutePathString(genTargetFolder)
-			fsa.setOutputPath(absoluteGenFolderPath)
-			val uri = EMFBridge.getEMFPlatformUriForIResource(file)
-			generateFromResourceAtURI(uri, fsa, generator)
+	def static void generateFromSelectedFilesInFolder(Iterable<IFile> inputFiles, Module generatorModule, Ecore2TxtGenerator generator, boolean concatOutputToSingleFile, boolean postProcessContents) {
+		val fsa = createAndInjectFileSystemAccessIntoGeneratorModule(generatorModule)
+		var contentsForFolderAndFileNames = generator.generateContentsForFolderAndFileNamesInProject(inputFiles)
+		if (concatOutputToSingleFile) {
+			contentsForFolderAndFileNames = concatOutputToFirstFile(contentsForFolderAndFileNames, generator, postProcessContents)
+		}
+		outputToFolderFileNameAndProject(contentsForFolderAndFileNames, fsa)
+	}
+	
+	def static JavaIoFileSystemAccess createAndInjectFileSystemAccessIntoGeneratorModule(Module generatorModule) {
+		val fsa = new JavaIoFileSystemAccess()
+		// without this injection the fsa would not provide the encoding
+		Guice.createInjector(generatorModule).injectMembers(fsa)
+		return fsa
+	}
+	
+	def static Iterable<Quadruple<String,String,String,IProject>> concatOutputToFirstFile(Iterable<Quadruple<String,String,String,IProject>> contentsForFolderAndFileNames, Ecore2TxtGenerator generator, boolean postProcessContents) {
+		val iterator = contentsForFolderAndFileNames.iterator
+		if (iterator.hasNext) {
+			val contentForFolderAndFileName = iterator.next
+			val folderName = contentForFolderAndFileName.second
+			val fileName = contentForFolderAndFileName.third
+			val project = contentForFolderAndFileName.fourth
+			val contentBuilder = new StringBuilder()
+			contentsForFolderAndFileNames.forEach[contentBuilder.append(it.first)]
+			var contents = contentBuilder.toString
+			if (postProcessContents) {
+				contents = generator.postProcessGeneratedContents(contents)
+			}
+			return #[new Quadruple<String,String,String,IProject>(contents, folderName, fileName, project)]
+		} else {
+			throw new IllegalArgumentException("Cannot concat the empty output '" + contentsForFolderAndFileNames + "'!")
 		}
 	}
 
-	def static void generateFromResourceAtURI(URI uri, IFileSystemAccess fsa, IGenerator generator) {
-		val resourceSet = new ResourceSetImpl()
-		val resource = EcoreResourceBridge.loadResourceAtURI(uri, resourceSet)
-		generator.doGenerate(resource, fsa)
+	def static void outputToFolderFileNameAndProject(Iterable<Quadruple<String,String,String,IProject>> contentsForFolderAndFileNames, JavaIoFileSystemAccess fsa) {
+		for (contentForFolderAndFileName : contentsForFolderAndFileNames) {
+			val content = contentForFolderAndFileName.first
+			val folderName = contentForFolderAndFileName.second
+			val fileName = contentForFolderAndFileName.third
+			val project = contentForFolderAndFileName.fourth
+			val genTargetFolder = EMFBridge.createFolderInProjectIfNecessary(project, folderName)
+			val absoluteGenFolderPath = EclipseBridge.getAbsolutePathString(genTargetFolder)
+			fsa.setOutputPath(absoluteGenFolderPath)
+			fsa.generateFile(fileName, content)
+		}
 	}
 }

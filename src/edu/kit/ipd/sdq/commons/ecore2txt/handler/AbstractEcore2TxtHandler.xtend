@@ -24,7 +24,7 @@ public abstract class AbstractEcore2TxtHandler<T extends IResource> extends Abst
 	override execute(ExecutionEvent event) throws ExecutionException {
 		val selection = HandlerUtil.getCurrentSelection(event)
 		val filteredSelection = filterSelection(selection)
-		executeEcore2TxtGenerator(filteredSelection, event)
+		executeEcore2TxtGenerator(filteredSelection, event, getPlugInID())
 		return null
 	}
 
@@ -34,5 +34,7 @@ public abstract class AbstractEcore2TxtHandler<T extends IResource> extends Abst
 	
 	def abstract Iterable<T> filterSelection(ISelection selection) 
 	
-	def abstract void executeEcore2TxtGenerator(Iterable<T> filteredSelection, ExecutionEvent event)
+	def abstract String getPlugInID()
+	
+	def abstract void executeEcore2TxtGenerator(Iterable<T> filteredSelection, ExecutionEvent event, String plugInID)
 }
