@@ -36,5 +36,5 @@ public abstract class AbstractEcore2TxtHandler<T extends IResource> extends Abst
 	
 	def abstract String getPlugInID()
 	
-	def abstract void executeEcore2TxtGenerator(Iterable<T> filteredSelection, ExecutionEvent event, String plugInID)
+	def abstract void executeEcore2TxtGenerator(Iterable<T> filteredSelection, ExecutionEvent event, String plugInID) throws ExecutionException
 }
