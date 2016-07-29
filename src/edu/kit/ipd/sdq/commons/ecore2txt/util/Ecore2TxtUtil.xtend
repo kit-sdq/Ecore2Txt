@@ -20,6 +20,7 @@ import edu.kit.ipd.sdq.vitruvius.framework.util.datatypes.Quadruple
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
+import java.util.List
 
 /**
  * A utility class for generating code from Ecore-based models triggered by an entry in the Eclipse navigator.
@@ -31,7 +32,7 @@ class Ecore2TxtUtil {
 		// empty
 	}
 	
-	def static void generateFromSelectedFilesInFolder(Iterable<IFile> inputFiles, Module generatorModule, Ecore2TxtGenerator generator, boolean concatOutputToSingleFile, boolean postProcessContents) {
+	def static void generateFromSelectedFilesInFolder(List<IFile> inputFiles, Module generatorModule, Ecore2TxtGenerator generator, boolean concatOutputToSingleFile, boolean postProcessContents) {
 		val fsa = createAndInjectFileSystemAccessIntoGeneratorModule(generatorModule)
 		var contentsForFolderAndFileNames = generator.generateContentsForFolderAndFileNamesInProject(inputFiles)
 		if (concatOutputToSingleFile) {

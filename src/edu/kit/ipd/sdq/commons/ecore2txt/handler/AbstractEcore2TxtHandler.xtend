@@ -18,6 +18,7 @@ import org.eclipse.core.commands.IHandler
 import org.eclipse.core.resources.IResource
 import org.eclipse.jface.viewers.ISelection
 import org.eclipse.ui.handlers.HandlerUtil
+import java.util.List
 
 public abstract class AbstractEcore2TxtHandler<T extends IResource> extends AbstractHandler implements IHandler {
 	
@@ -32,9 +33,9 @@ public abstract class AbstractEcore2TxtHandler<T extends IResource> extends Abst
 		return true;
 	}
 	
-	def abstract Iterable<T> filterSelection(ISelection selection) 
+	def abstract List<T> filterSelection(ISelection selection) 
 	
 	def abstract String getPlugInID()
 	
-	def abstract void executeEcore2TxtGenerator(Iterable<T> filteredSelection, ExecutionEvent event, String plugInID) throws ExecutionException
+	def abstract void executeEcore2TxtGenerator(List<T> filteredSelection, ExecutionEvent event, String plugInID) throws ExecutionException
 }

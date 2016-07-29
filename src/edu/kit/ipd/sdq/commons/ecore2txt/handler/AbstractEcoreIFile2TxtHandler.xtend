@@ -15,13 +15,14 @@ import org.eclipse.core.resources.IFile
 import org.eclipse.jface.viewers.ISelection
 import org.eclipse.jface.viewers.IStructuredSelection
 import java.util.Collections
+import java.util.List
 
 public abstract class AbstractEcoreIFile2TxtHandler extends AbstractEcore2TxtHandler<IFile> {
 	
-	override Iterable<IFile> filterSelection(ISelection selection) {
+	override List<IFile> filterSelection(ISelection selection) {
 		if (selection instanceof IStructuredSelection) {
 			val structuredSelection = selection as IStructuredSelection
-			val files = structuredSelection.toList.filter(typeof(IFile))
+			val files = structuredSelection.toList.filter(typeof(IFile)).toList
 			if (files.size > 0) {
 				return files
 			}

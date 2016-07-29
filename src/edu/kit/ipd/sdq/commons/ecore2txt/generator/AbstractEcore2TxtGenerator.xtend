@@ -9,13 +9,15 @@ import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import java.util.List
 
 abstract class AbstractEcore2TxtGenerator implements Ecore2TxtGenerator {
 	
-	override generateContentsForFolderAndFileNamesInProject(Iterable<IFile> inputFiles) {			
+	override generateContentsForFolderAndFileNamesInProject(List<IFile> inputFiles) {			
 		val resourceSet = new ResourceSetImpl()
 		val results = new ArrayList<Quadruple<String,String,String,IProject>>()
-		for (inputFile : inputFiles) {
+		val preprocessedInputFiles = preprocessInputFiles(inputFiles)
+		for (inputFile : preprocessedInputFiles) {
 			val inputURI = EMFBridge.getEMFPlatformUriForIResource(inputFile)
 			val inputResource = EcoreResourceBridge.loadResourceAtURI(inputURI, resourceSet)
 			val project = getProjectForFile(inputFile)
@@ -29,6 +31,11 @@ abstract class AbstractEcore2TxtGenerator implements Ecore2TxtGenerator {
 			}
 		}
 		return results
+	}
+	
+	def List<IFile> preprocessInputFiles(List<IFile> inputFiles) {
+		// do nothing
+		return inputFiles
 	}
 	
 	/**
