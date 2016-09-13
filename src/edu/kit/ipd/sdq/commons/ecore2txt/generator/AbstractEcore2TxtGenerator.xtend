@@ -1,15 +1,15 @@
 package edu.kit.ipd.sdq.commons.ecore2txt.generator
 
-import edu.kit.ipd.sdq.vitruvius.framework.util.bridges.EMFBridge
-import edu.kit.ipd.sdq.vitruvius.framework.util.bridges.EcoreResourceBridge
-import edu.kit.ipd.sdq.vitruvius.framework.util.datatypes.Quadruple
-import edu.kit.ipd.sdq.vitruvius.framework.util.datatypes.Triple
+import tools.vitruv.framework.util.bridges.EMFBridge
+import tools.vitruv.framework.util.bridges.EcoreResourceBridge
+import tools.vitruv.framework.util.datatypes.Quadruple
 import java.util.ArrayList
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import java.util.List
+import org.eclipse.internal.xtend.util.Triplet
 
 abstract class AbstractEcore2TxtGenerator implements Ecore2TxtGenerator {
 	
@@ -41,7 +41,7 @@ abstract class AbstractEcore2TxtGenerator implements Ecore2TxtGenerator {
 	/**
 	 * @return an iterable of pairs of generated contents and file names
 	 */
-	def abstract Iterable<Triple<String,String,String>> generateContentsFromResource(Resource inputResource)
+	def abstract Iterable<Triplet<String,String,String>> generateContentsFromResource(Resource inputResource)
 	
 	def abstract String getFolderNameForResource(Resource inputResource)
 	

@@ -14,9 +14,9 @@
 import com.google.inject.Guice
 import com.google.inject.Module
 import edu.kit.ipd.sdq.commons.ecore2txt.generator.Ecore2TxtGenerator
-import edu.kit.ipd.sdq.vitruvius.framework.util.bridges.EMFBridge
-import edu.kit.ipd.sdq.vitruvius.framework.util.bridges.EclipseBridge
-import edu.kit.ipd.sdq.vitruvius.framework.util.datatypes.Quadruple
+import tools.vitruv.framework.util.bridges.EMFBridge
+import tools.vitruv.framework.util.bridges.EclipseBridge
+import tools.vitruv.framework.util.datatypes.Quadruple
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess

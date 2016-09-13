@@ -1,6 +1,6 @@
 package edu.kit.ipd.sdq.commons.ecore2txt.generator
 
-import edu.kit.ipd.sdq.vitruvius.framework.util.datatypes.Quadruple
+import tools.vitruv.framework.util.datatypes.Quadruple
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import java.util.List
