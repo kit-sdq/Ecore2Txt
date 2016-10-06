@@ -21,6 +21,7 @@ abstract class AbstractEcore2TxtGenerator implements Ecore2TxtGenerator {
 			val inputURI = EMFBridge.getEMFPlatformUriForIResource(inputFile)
 			val inputResource = EcoreResourceBridge.loadResourceAtURI(inputURI, resourceSet)
 			val project = getProjectForFile(inputFile)
+			preprocessInputResourceInPlace(inputResource)
 			val contentsForFolderAndFileNames = generateContentsFromResource(inputResource)
 			for (contentForFolderAndFileName : contentsForFolderAndFileNames) {
 				val content = contentForFolderAndFileName.first
@@ -36,6 +37,10 @@ abstract class AbstractEcore2TxtGenerator implements Ecore2TxtGenerator {
 	def List<IFile> preprocessInputFiles(List<IFile> inputFiles) {
 		// do nothing
 		return inputFiles
+	}
+	
+	def void preprocessInputResourceInPlace(Resource inputResource) {
+		// do nothing
 	}
 	
 	/**
