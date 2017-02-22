@@ -1,4 +1,4 @@
-package edu.kit.ipd.sdq.commons.ecore2txt.generator
+package edu.kit.ipd.sdq.mdsd.ecore2txt.generator
 
 import tools.vitruv.framework.util.bridges.EMFBridge
 import tools.vitruv.framework.util.bridges.EcoreResourceBridge

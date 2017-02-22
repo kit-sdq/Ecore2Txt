@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Ecore2Txt
-Bundle-SymbolicName: edu.kit.ipd.sdq.commons.ecore2txt
+Bundle-SymbolicName: edu.kit.ipd.sdq.mdsd.ecore2txt
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: SDQ
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
@@ -20,6 +20,6 @@ Require-Bundle: com.google.guava,
  org.eclipse.xtext.generator,
  org.eclipse.xtext.builder,
  org.eclipse.xtext
-Export-Package: edu.kit.ipd.sdq.commons.ecore2txt.handler,
- edu.kit.ipd.sdq.commons.ecore2txt.generator,
- edu.kit.ipd.sdq.commons.ecore2txt.util
+Export-Package: edu.kit.ipd.sdq.mdsd.ecore2txt.handler,
+ edu.kit.ipd.sdq.mdsd.ecore2txt.generator,
+ edu.kit.ipd.sdq.mdsd.ecore2txt.util

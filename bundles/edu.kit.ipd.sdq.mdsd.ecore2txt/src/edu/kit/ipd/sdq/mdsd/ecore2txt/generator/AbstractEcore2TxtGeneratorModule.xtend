@@ -9,7 +9,7 @@
  * Contributors:
  *    M. Kramer - initial API and implementation
  *******************************************************************************/
- package edu.kit.ipd.sdq.commons.ecore2txt.generator
+ package edu.kit.ipd.sdq.mdsd.ecore2txt.generator
 
 import org.eclipse.xtext.parser.IEncodingProvider
 import org.eclipse.xtext.resource.generic.AbstractGenericResourceRuntimeModule
