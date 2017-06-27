@@ -1,9 +1,9 @@
 package edu.kit.ipd.sdq.mdsd.ecore2txt.generator
 
-import tools.vitruv.framework.util.datatypes.Quadruple
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import java.util.List
+import edu.kit.ipd.sdq.commons.util.java.Quadruple
 
 interface Ecore2TxtGenerator {
 

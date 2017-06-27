@@ -16,10 +16,12 @@ Require-Bundle: com.google.guava,
  org.eclipse.jface;visibility:=reexport,
  org.eclipse.ui.workbench,
  com.google.inject,
- tools.vitruv.framework.util,
  org.eclipse.xtext.generator,
  org.eclipse.xtext.builder,
- org.eclipse.xtext
+ org.eclipse.xtext,
+ edu.kit.ipd.sdq.commons.util.java,
+ edu.kit.ipd.sdq.commons.util.emf,
+ edu.kit.ipd.sdq.commons.util.eclipse
 Export-Package: edu.kit.ipd.sdq.mdsd.ecore2txt.handler,
  edu.kit.ipd.sdq.mdsd.ecore2txt.generator,
  edu.kit.ipd.sdq.mdsd.ecore2txt.util

@@ -13,14 +13,15 @@
 
 import com.google.inject.Guice
 import com.google.inject.Module
+import edu.kit.ipd.sdq.commons.util.java.Quadruple
 import edu.kit.ipd.sdq.mdsd.ecore2txt.generator.Ecore2TxtGenerator
-import tools.vitruv.framework.util.bridges.EMFBridge
-import tools.vitruv.framework.util.bridges.EclipseBridge
-import tools.vitruv.framework.util.datatypes.Quadruple
+import java.util.List
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
-import java.util.List
+
+import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.core.resources.IProjectUtil.*
+import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.core.resources.IResourceUtil.*
 
 /**
  * A utility class for generating code from Ecore-based models triggered by an entry in the Eclipse navigator.
@@ -73,8 +74,8 @@ class Ecore2TxtUtil {
 			val folderName = contentForFolderAndFileName.second
 			val fileName = contentForFolderAndFileName.third
 			val project = contentForFolderAndFileName.fourth
-			val genTargetFolder = EMFBridge.createFolderInProjectIfNecessary(project, folderName)
-			val absoluteGenFolderPath = EclipseBridge.getAbsolutePathString(genTargetFolder)
+			val genTargetFolder = project.createFolderInProjectIfNecessary(folderName)
+			val absoluteGenFolderPath = genTargetFolder.getAbsolutePathString()
 			fsa.setOutputPath(absoluteGenFolderPath)
 			fsa.generateFile(fileName, content)
 		}
