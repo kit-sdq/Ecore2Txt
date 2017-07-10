@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>edu.kit.ipd.sdq.mdsd.ecore2txt</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../edu.kit.ipd.sdq.mdsd.ecore2txt.parent</relativePath>
+	</parent>
+
+	<artifactId>edu.kit.ipd.sdq.mdsd.ecore2txt.updatesite</artifactId>
+	<packaging>eclipse-repository</packaging>
+	<name>Notation2Plant Update Site</name>
+
+	<properties>
+		<!-- We use the nightly profile as defaults -->
+		<deployUser>${env.DEPLOY_USERNAME}</deployUser>
+		<deployKey>${env.DEPLOY_PASSWORD}</deployKey>
+		<deploySubject>ecore2txt-project</deploySubject>
+		<deployRepository>Notation2Plant</deployRepository>
+		<deployPackage>updatesite</deployPackage>
+		<deployVersion>latest</deployVersion>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<properties>
+				<deployPackage>${project.version}</deployPackage>
+			</properties>
+		</profile>
+		<profile>
+			<id>nightly</id>
+			<!-- just use the default values for the properties -->
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>release</releaseProfiles>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<releaseVersion>${deployVersion}</releaseVersion>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${maven.deploy-plugin.version}</version>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>none</phase>
+					</execution>
+					<execution>
+						<id>deploy-updatesite</id>
+						<phase>deploy</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<executions>
+					<execution>
+						<id>deploy-updatesite</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>python</executable>
+							<arguments>
+								<argument>${basedir}/../deploy.py</argument>
+								<argument>${deployUser}</argument>
+								<argument>${deployKey}</argument>
+								<argument>${deploySubject}</argument>
+								<argument>${deployRepository}</argument>
+								<argument>${deployPackage}</argument>
+								<argument>${deployVersion}</argument>
+								<argument>${project.build.directory}/${project.artifactId}-${project.version}.zip</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
