@@ -17,6 +17,11 @@
       <layout>p2</layout>
       <url>http://download.eclipse.org/releases/oxygen</url>
     </repository>
+    <repository>
+	    <id>SDQ Commons</id>
+	    <layout>p2</layout>
+	    <url>https://kit-sdq.github.io/updatesite/nightly/commons</url>
+    </repository>
   </repositories>
   <build>
     <plugins>

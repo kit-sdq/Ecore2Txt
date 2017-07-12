@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -12,12 +13,4 @@
     <module>releng/edu.kit.ipd.sdq.mdsd.ecore2txt.aggregator</module>
     <module>releng/edu.kit.ipd.sdq.mdsd.ecore2txt.updatesite</module>
   </modules>
-  <repositories>
-		<!-- If you adjust a repository here, please also adjust the repository in the b3 aggregator. -->
-		<repository>
-			<id>SDQ Commons</id>
-			<layout>p2</layout>
-			<url>https://kit-sdq.github.io/updatesite/nightly/</url>
-		</repository>
-</repositories>
 </project>

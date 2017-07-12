@@ -6,9 +6,12 @@
 		<groupId>edu.kit.ipd.sdq.mdsd.ecore2txt</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../edu.kit.ipd.sdq.mdsd.ecore2txt.parent</relativePath>
+		<relativePath>../releng/</relativePath>
 	</parent>
-	<artifactId>edu.kit.ipd.sdq.mdsd.ecore2txt.updatesite</artifactId>
-	<name>ecore2txt Update Site</name>
-	<packaging>eclipse-repository</packaging>
+	<artifactId>features</artifactId>
+	<packaging>pom</packaging>
+	<name>ecore2txt Feature Modules</name>
+	<modules>
+		<module>edu.kit.ipd.sdq.mdsd.ecore2txt.feature</module>
+	</modules>
 </project>
