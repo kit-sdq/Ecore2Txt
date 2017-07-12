@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>edu.kit.ipd.sdq.mdsd.ecore2txt</groupId>
-		<artifactId>releng</artifactId>
+		<artifactId>parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../</relativePath>
+		<relativePath>../edu.kit.ipd.sdq.mdsd.ecore2txt.parent</relativePath>
 	</parent>
 	<artifactId>edu.kit.ipd.sdq.mdsd.ecore2txt.updatesite.aggregated</artifactId>
 	<packaging>pom</packaging>
