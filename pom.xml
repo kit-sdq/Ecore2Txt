@@ -12,5 +12,6 @@
   <modules>
     <module>releng/edu.kit.ipd.sdq.mdsd.ecore2txt.aggregator</module>
     <module>releng/edu.kit.ipd.sdq.mdsd.ecore2txt.updatesite</module>
+    <module>releng/edu.kit.ipd.sdq.mdsd.ecore2txt.updatesite.aggregated</module>
   </modules>
 </project>
