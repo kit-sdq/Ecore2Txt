@@ -6,7 +6,7 @@
 		<groupId>edu.kit.ipd.sdq.mdsd.ecore2txt</groupId>
 		<artifactId>releng</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../edu.kit.ipd.sdq.mdsd.ecore2txt.parent</relativePath>
+		<relativePath>../</relativePath>
 	</parent>
 	<artifactId>edu.kit.ipd.sdq.mdsd.ecore2txt.updatesite.aggregated</artifactId>
 	<packaging>pom</packaging>
