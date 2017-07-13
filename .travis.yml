@@ -14,4 +14,4 @@ install: true
 script: mvn clean verify
 
 after_success:
-- . /tmp/BuildUtilities/travis-ci/deploy.sh commons releng/edu.kit.ipd.sdq.mdsd.ecore2txt.updatesite.aggregated final kit-sdq updatesite
+- . /tmp/BuildUtilities/travis-ci/deploy.sh ecore2txt releng/edu.kit.ipd.sdq.mdsd.ecore2txt.updatesite.aggregated final kit-sdq updatesite
