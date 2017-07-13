@@ -6,7 +6,7 @@
     </contributions>
     <contributions label="externals">
       <repositories location="http://download.eclipse.org/releases/oxygen/" mirrorArtifacts="false">
-        <features name="org.eclipse.xtend.sdq.feature.group" versionRange="2.10.0" categories="//@customCategories[identifier='externals']"/>
+        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.10.0" categories="//@customCategories[identifier='externals']"/>
       </repositories>
       <repositories location="https://kit-sdq.github.io/updatesite/nightly/commons" mirrorArtifacts="false">
         <features name="edu.kit.ipd.sdq" versionRange="1.0.0" categories="//@customCategories[identifier='externals']"/>
