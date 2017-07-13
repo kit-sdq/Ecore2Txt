@@ -11,7 +11,4 @@
 	<artifactId>edu.kit.ipd.sdq.mdsd.ecore2txt.features</artifactId>
 	<packaging>pom</packaging>
 	<name>ecore2txt Feature Modules</name>
-	<modules>
-		<module>edu.kit.ipd.sdq.mdsd.ecore2txt.feature</module>
-	</modules>
 </project>

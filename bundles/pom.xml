@@ -11,7 +11,4 @@
 	<artifactId>edu.kit.ipd.sdq.mdsd.ecore2txt.bundles</artifactId>
 	<packaging>pom</packaging>
 	<name>ecore2txt Bundle Modules</name>
-	<modules>
-		<module>edu.kit.ipd.sdq.mdsd.ecore2txt</module>
-	</modules>
 </project>
