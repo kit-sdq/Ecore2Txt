@@ -4,24 +4,19 @@
       label="Ecore2Txt"
       version="1.0.0.qualifier"
       provider-name="SDQ">
-
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="https://github.com/kit-sdq/Ecore2Txt">
+      Generate any text / code from Ecore-based models
    </description>
-
    <copyright url="http://www.example.com/copyright">
       [Enter Copyright Description here.]
    </copyright>
-
    <license url="http://www.example.com/license">
       [Enter License Description here.]
    </license>
-
    <plugin
          id="edu.kit.ipd.sdq.mdsd.ecore2txt"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
 </feature>
