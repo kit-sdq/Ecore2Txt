@@ -13,6 +13,12 @@
    <license url="http://www.example.com/license">
       [Enter License Description here.]
    </license>
+   <requires>
+      <import feature="org.eclipse.xtend.source"/>
+      <import feature="edu.kit.ipd.sdq.commons.util.java.feature.source" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="edu.kit.ipd.sdq.commons.util.emf.feature.source" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="edu.kit.ipd.sdq.commons.util.eclipse.feature.source" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
    <plugin
          id="edu.kit.ipd.sdq.mdsd.ecore2txt"
          download-size="0"
