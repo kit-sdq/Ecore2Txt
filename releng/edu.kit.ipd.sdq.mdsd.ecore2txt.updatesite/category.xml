@@ -3,6 +3,9 @@
    <feature url="features/edu.kit.ipd.sdq.mdsd.ecore2txt.feature_1.0.0.qualifier.jar" id="edu.kit.ipd.sdq.mdsd.ecore2txt.feature" version="1.0.0.qualifier">
       <category name="Ecore2Txt"/>
    </feature>
+   <feature id="edu.kit.ipd.sdq.mdsd.ecore2txt.feature.source" version="1.0.0.qualifier">
+      <category name="Ecore2Txt"/>
+   </feature>
    <category-def name="Ecore2Txt" label="Ecore2Txt">
       <description>
          Generate code from Ecore-based models
