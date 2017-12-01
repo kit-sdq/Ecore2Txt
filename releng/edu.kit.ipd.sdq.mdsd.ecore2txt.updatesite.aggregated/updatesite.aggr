@@ -8,7 +8,7 @@
       <repositories location="http://sdqbuild.ipd.kit.edu/nexus/content/groups/eclipse-oxygen-complete/" mirrorArtifacts="false">
         <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.10.0"/>
       </repositories>
-      <repositories location="http://sdqbuild.ipd.kit.edu/nexus/content/repositories/kit-sdq-nightly/commons" mirrorArtifacts="false">
+      <repositories location="http://sdqbuild.ipd.kit.edu/nexus/content/repositories/kit-sdq-nightly/commons" mirrorArtifacts="true">
 	      <features name="edu.kit.ipd.sdq.commons.util.java.feature.feature.group" versionRange="[1.0.0,2.0.0)"/>
 	      <features name="edu.kit.ipd.sdq.commons.util.emf.feature.feature.group" versionRange="[1.0.0,2.0.0)"/>
 	      <features name="edu.kit.ipd.sdq.commons.util.eclipse.feature.feature.group" versionRange="[1.0.0,2.0.0)"/>
