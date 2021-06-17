@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.internal.xtend.util.Triplet
 
-import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.core.resources.IResourceUtil.*
-import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.emf.common.util.URIUtil.*
+import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.emf.common.util.URIUtil.createPlatformResourceURI
+import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.resource.ResourceSetUtil.loadOrCreateResource
 
 abstract class AbstractEcore2TxtGenerator implements Ecore2TxtGenerator {
 	
@@ -19,8 +19,8 @@ abstract class AbstractEcore2TxtGenerator implements Ecore2TxtGenerator {
 		val results = new ArrayList<Quadruple<String,String,String,IProject>>()
 		val preprocessedInputFiles = preprocessInputFiles(inputFiles)
 		for (inputFile : preprocessedInputFiles) {
-			val inputURI = inputFile.getEMFPlatformURI()
-			val inputResource = inputURI.loadResourceAtURI(resourceSet)
+			val inputURI = inputFile.createPlatformResourceURI
+			val inputResource = resourceSet.loadOrCreateResource(inputURI);
 			val project = getProjectForFile(inputFile)
 			preprocessInputResourceInPlace(inputResource)
 			val contentsForFolderAndFileNames = generateContentsFromResource(inputResource)
