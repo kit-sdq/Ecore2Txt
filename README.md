@@ -1,5 +1,5 @@
 # Ecore2Txt
-Generate any text / code from Ecore-based models
+Generate any text / code from Ecore-based models from within your Eclipse IDE.
 
 Xtend-based infrastructure for generating any text / code from model instances of Ecore-based metamodels of the Eclipse Modeling Framework (EMF)
 
